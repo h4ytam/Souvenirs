@@ -5,11 +5,11 @@ import cors from "cors";
 import postRoutes from "./routes/posts.js";
 
 const app = express();
-app.use("/posts", postRoutes);
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
+app.use("/posts", postRoutes);
 
 // const CONNECTION_URL = `mongodb+srv://haytam:Haytam20@cluster0-do0lw.mongodb.net/test?retryWrites=true&w=majority`;
 const CONNECTION_URL = `mongodb://haytam:Haytam20@cluster0-shard-00-00.do0lw.mongodb.net:27017,cluster0-shard-00-01.do0lw.mongodb.net:27017,cluster0-shard-00-02.do0lw.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority`;
