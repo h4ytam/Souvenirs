@@ -5,10 +5,11 @@ import { useDispatch } from "react-redux";
 import Form from "./components/Form/Form";
 import Posts from "./components/Posts/Posts";
 import useStyles from "./styles";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getPosts } from "./actions/posts";
 
 const App = () => {
+  const [currentId, setCurrentId] = useState(null);
   const classes = useStyles();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -35,12 +36,13 @@ const App = () => {
             justify="space-between"
             alignItems="stretch"
             spacing={3}
-          ></Grid>
-          <Grid item xs={12} sm={7}>
-            <Posts />
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <Form />
+          >
+            <Grid item xs={12} sm={7}>
+              <Posts setCurrentId={setCurrentId} />
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Form currentId={currentId} setCurrentId={setCurrentId} />
+            </Grid>
           </Grid>
         </Container>
       </Grow>
